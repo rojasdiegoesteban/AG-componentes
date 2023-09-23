@@ -1,0 +1,34 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
+    <mat-toolbar color="primary" class="example-toolbar">
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <h1 class="example-app-name">Desafio: Componentes y Elementos de un proyecto Angular</h1>
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="example-sidenav-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+        <mat-nav-list>
+            <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">
+                <div class="nav-element">
+                    <mat-icon>{{nav.icon}}</mat-icon>
+                    <div class="nav-name">{{nav.name}}</div>
+                </div>
+            </a>
+        </mat-nav-list>
+      </mat-sidenav>
+  
+      <mat-sidenav-content>
+        <!-- Llamo a page-wrapper y footer -->
+        <app-page-wrapper>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A, sint tenetur? Deleniti minus fuga tempora ab, dolorum
+                saepe maxime? Animi quibusdam ipsam consequuntur corporis quidem quis soluta explicabo vitae neque.
+            </p>
+        </app-page-wrapper>
+        <app-footer></app-footer>
+        
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+  
+  <div *ngIf="!shouldRun">Please open on Stackblitz to see result</div>
